@@ -1,5 +1,5 @@
 pipeline {
-    agents any
+    agent any
     stages {
         stage('Bitbucket') {
             steps {
@@ -12,6 +12,13 @@ pipeline {
             steps {
                 script {
                     echo "Packaging Code: Successfull..."
+                }
+            }
+        }
+        stage('SonarQube') {
+            steps {
+                script {
+                    echo "Code quality Check: Successfull..."
                 }
             }
         }
@@ -29,7 +36,7 @@ pipeline {
                 }
             }
         }
-        stage('Openshift') {
+        stage('Openshift cluster') {
             steps {
                 script {
                     echo "Succesfully Deployed into Cluster..."
